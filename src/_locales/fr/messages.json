@@ -1,0 +1,13 @@
+{
+   "ext_name": {"message": "Cuistache - Le Chef Beshamel"},
+   "ext_description": {"message": "Cuistache vous permet d'importer des recettes sur Beshamel."},
+   "access_website": {"message": "Accéder à Beshamel"},
+   "connecting": {"message": "Connexion..."},
+   "analyzing": {"message": "Analyse..."},
+   "recipe_not_found": {"message": "Aucune recette n'a été trouvée sur cette page"},
+   "import_recipe": {"message": "Importer cette recette dans Beshamel"},
+   "recipe_servings":{"message":"$1 couvert(s)"},
+   "recipe_equipments":{"message":"$1 matériel(s)"},
+   "recipe_ingredients":{"message":"$1 ingrédient(s)"},
+   "recipe_tasks":{"message":"$1 étape(s)"}
+}

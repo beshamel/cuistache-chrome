@@ -5,8 +5,8 @@ recipe_interpretors.push(
 	getRecipe: function(){
 		var recipe = {};
 		
-		// Recipe Title
-		recipe.title=$('h1.m_title').text().trim();
+		// Recipe Name
+		recipe.name=$('h1.m_title').text().trim();
 		
 		// Ingredients List
 		var ingredients_div = $('.m_content_recette_ingredients').clone();

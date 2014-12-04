@@ -2,20 +2,8 @@
 <html>
   <head>
     <title>Cuistache</title>
-    <style>
-      body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
-
-      img {
-        margin: 5px;
-        border: 2px solid black;
-        vertical-align: middle;
-        width: 75px;
-        height: 75px;
-      }
-    </style>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link href="/css/popup.css" media="all" rel="stylesheet" />
 
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
@@ -25,18 +13,24 @@
      -->
 
 	<script src="scripts/libraries.js"></script>
-	<script src="scripts/popup.js"></script>
+
   </head>
   <body>
-  	 <div class="user">
+	<div class="user">
+		<header id="user-name" data-translate="connecting"></header>
 		<img id="user-image" src=""/>
-		<header id="user-name">Connectez-vous...</header>
-	 </div>
-	 <hr />
-  	 <div class="content"><header id="recipe-name">Aucune recette reconnue</header></div>
-	 <hr />
-	 <a id="goto" href="http://beshamel.fr/app" target="_blank">Go to Beshamel</a>
-
+	</div>
+	<div class="content">
+		<h1 id="recipe-source"></h1>
+		<div id="recipe-name" data-translate="analyzing"></div>
+		<ul id="recipe-detail">
+		</ul>
+	</div>
+	<hr />
+	<div class="actions">
+		<a class="button full" id="goto" href="http://beshamel.fr/app" target="_blank" data-translate="access_website"></a>
+	</div>
+	<script src="scripts/popup.js"></script>
   </body>
 </html>
 

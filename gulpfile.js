@@ -10,6 +10,7 @@ var uglify  = require("gulp-uglify");
 var argv    = require("yargs").argv;
 var del     = require('del');
 var fs      = require('fs');
+var runSequence = require('run-sequence');
 
 var manifest = require('./src/manifest.json');
 
@@ -22,7 +23,7 @@ gulp.task('clean', function(cb) {
   del(['dist/**/*'], cb);
 });
 
-gulp.task("js", ['clean'], function() {
+gulp.task("js", function() {
   return gulp
 	.src([
 		"src/scripts/*.js"
@@ -38,7 +39,7 @@ gulp.task("bower", function(cb) {
 	.on("end", function() { cb(); });
 });
 
-gulp.task("libs", ["clean", "bower"], function() {
+gulp.task("libs", ["bower"], function() {
   return gulp
 	.src([
 		  config.bowerDir + 'jquery/dist/jquery.min.js'
@@ -48,7 +49,7 @@ gulp.task("libs", ["clean", "bower"], function() {
 	.pipe(gulp.dest("dist/scripts/"));
 });
 
-gulp.task('css', ['clean'], function() {
+gulp.task('css', function() {
   return gulp
 	.src([
 		'src/css/*.css'
@@ -56,7 +57,7 @@ gulp.task('css', ['clean'], function() {
 	.pipe(gulp.dest("dist/css/"));
 });
 
-gulp.task("img", ['clean'], function() {
+gulp.task("img", function() {
   return gulp
 	.src([
 		  'src/img/**/*.png',
@@ -65,7 +66,7 @@ gulp.task("img", ['clean'], function() {
 	.pipe(gulp.dest("dist/img"));
 });
 
-gulp.task("svg", ['clean', 'version', 'img'], function() {
+gulp.task("svg", ['version', 'img'], function() {
   fs.mkdir('dist/img');
 
   var icons_sizes = ["16", "48", "128"];
@@ -88,7 +89,7 @@ gulp.task("svg", ['clean', 'version', 'img'], function() {
     .pipe(shell(commands));
 });
 
-gulp.task("html", ['clean'], function() {
+gulp.task("html", function() {
   return gulp
 	.src([
 		  'src/*.html'
@@ -96,7 +97,15 @@ gulp.task("html", ['clean'], function() {
 	.pipe(gulp.dest("dist/"));
 });
 
-gulp.task("manifest", ['clean', 'version', 'svg'], function() {
+gulp.task("translations", function() {
+  return gulp
+	.src([
+		  'src/_locales/**/*.json'
+	])
+	.pipe(gulp.dest("dist/_locales"));
+});
+
+gulp.task("manifest",  ['version', 'svg'], function() {
   return file('manifest.json', JSON.stringify(manifest, null, 2), { src: true })
 	.pipe(gulp.dest("dist/"));
 });
@@ -110,11 +119,22 @@ gulp.task("version", function() {
 	}
 	
 	//increment build number
-	version[2] = Number(version[2]) + 1;
+	if (!argv.dev)
+	{
+		version[2] = Number(version[2]) + 1;
+	}
     manifest.version=version.join('.');
 
   return file('manifest.json', JSON.stringify(manifest, null, 2), { src: true })
 	.pipe(gulp.dest("src/"));
+});
+
+gulp.task('watch', function() {
+	gulp.watch(['src/css/**/*.css'], ['css']);
+	gulp.watch(['src/scripts/**/*.js'], ['js']);
+	gulp.watch(['src/manifest.json'], ['manifest']);
+	gulp.watch(['src/**/*.html'], ['html']);
+	gulp.watch(['src/_locales/**/*.json'], ['translations']);
 });
 
 gulp.task("assets", [
@@ -124,12 +144,13 @@ gulp.task("assets", [
 	'img',
 	'svg',
 	'html',
+	'translations',
 	'manifest'
 ]);
 
-gulp.task("build", [
-	'assets'
-]);
+gulp.task("build", function() {
+	return runSequence('clean', 'assets');
+});
 
 gulp.task("pack", function() {
 	return gulp

@@ -1,0 +1,83 @@
+body {
+	width: 400px;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+hr {
+	border-top: 1px #222222 solid;
+	border-bottom: 0;
+	margin: 2px 0;
+}
+
+ul {
+	margin: 0;
+}
+
+a.button {
+	background: #aa0033;
+	color: #ffffff;
+	padding: 12px;
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+a.button.full {
+	width: 100%;
+}
+
+.actions {
+	text-align: center;
+}
+
+.user
+{
+	background: #222222;
+	height: 64px;
+	padding-top: 8px;
+	margin-bottom: 32px;
+	text-align:center;
+}
+
+#user-name {
+	color: white;
+	font-size: 20px;
+}
+
+#user-image {
+	width: 64px;
+	height: 64px;
+	margin-bottom: -32x;
+	border-radius: 32px;
+	border: 2px solid #ffffff;
+	box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+}
+
+.content {
+	padding: 8px 0;
+}
+
+#recipe-detail {
+	display: none;
+}
+
+#recipe-source {
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 1px solid #222222;
+	margin-bottom: 4px;
+	margin-top: 0;
+}
+
+#recipe-name {
+	font-size: 16px;
+	font-style: italic;
+	color: #770022;
+}

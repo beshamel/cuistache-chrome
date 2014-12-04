@@ -20,6 +20,8 @@ function getRecipe() {
 
 recipe = getRecipe();
 
+if (!recipe) recipe = 0;
+
 chrome.runtime.sendMessage(null, recipe);
 
 })();
