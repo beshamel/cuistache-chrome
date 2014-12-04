@@ -1,0 +1,19 @@
+# Useless files
+*.log
+
+node_modules
+
+# Bower assets
+bower_components
+
+# Built assets
+dist/
+
+# Jetbrains Project
+.idea
+
+# Private SSL Key
+*.pem
+
+# Distribuable CRX extension
+*.crx

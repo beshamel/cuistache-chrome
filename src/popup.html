@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cuistache</title>
+    <style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+
+      img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+
+	<script src="scripts/libraries.js"></script>
+	<script src="scripts/popup.js"></script>
+  </head>
+  <body>
+  	 <div class="user">
+		<img id="user-image" src=""/>
+		<header id="user-name">Connectez-vous...</header>
+	 </div>
+	 <hr />
+  	 <div class="content"><header id="recipe-name">Aucune recette reconnue</header></div>
+	 <hr />
+	 <a id="goto" href="http://beshamel.fr/app" target="_blank">Go to Beshamel</a>
+
+  </body>
+</html>
+
