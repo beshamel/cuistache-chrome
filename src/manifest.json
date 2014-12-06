@@ -2,17 +2,33 @@
   "manifest_version": 2,
   "name": "__MSG_ext_name__",
   "description": "__MSG_ext_description__",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "default_locale": "fr",
-  "icons": {},
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
   "browser_action": {
-    "default_icon": {},
+    "default_icon": {
+      "19": "img/icon19.png",
+      "38": "img/icon38.png"
+    },
     "default_popup": "popup.html"
   },
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl/X0rwIiFv3rj8QBNONPDeaXqN3glkCM0NsFVswKl6dSeFueJ18g9zavcF6hTAX8fSt6/TxXrOqUzKbZzM+56INT51ZoidjDsX9wJTawNoCOr5zxCEd4bCVXznQWd9+0RKNcPyJ0qVVJcXBCIyjxlRI23AAXjIUaM8PwQ3Ndu/lJpBUllRwa9nChX1XXY48teJ77VsMv7u4VJ1UI66S6F7GRccnxqcIkTUNeMznp4NTk/ny0HVydUEV+jqoY55uFOyWcN+4xUopSX+7dIvG1cUboFZXpTED528ET0VWTmhbB3Ne1pnn4egOvZPuabSX+ORHfY8wNPX92tjXXgbHwVwIDAQAB",
   "permissions": [
     "activeTab",
     "http://beshamel.fr/*",
-    "http://api.beshamel.fr/*"
-  ]
+    "http://api.beshamel.fr/*",
+    "http://beshamel.dev:8080/*",
+    "http://api.beshamel.dev:8080/*"
+  ],
+  "web_accessible_resources": [
+    "oauth_callback.html",
+    "scripts/oauth.js"
+  ],
+  "background": {
+    "page": "oauth_callback.html"
+  }
 }

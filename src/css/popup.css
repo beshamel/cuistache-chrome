@@ -37,10 +37,13 @@ a.button.full {
 	text-align: center;
 }
 
+#connect.hidden {
+  display: none;
+}
+
 .user
 {
 	background: #222222;
-	height: 64px;
 	padding-top: 8px;
 	margin-bottom: 32px;
 	text-align:center;
@@ -54,7 +57,7 @@ a.button.full {
 #user-image {
 	width: 64px;
 	height: 64px;
-	margin-bottom: -32x;
+	margin-bottom: -32px;
 	border-radius: 32px;
 	border: 2px solid #ffffff;
 	box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);

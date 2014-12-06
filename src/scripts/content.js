@@ -8,14 +8,14 @@ var recipe_interpretors = [];
 //= require_tree ./interpretors
 
 function getRecipe() {
-	for (var i = 0; i < recipe_interpretors.length; ++i)
-	{
-		if (window.location.host.match(recipe_interpretors[i].matches))
-		{
-			return recipe_interpretors[i].getRecipe();
-		}
-	}
-	return null;
+  for (var i = 0; i < recipe_interpretors.length; ++i)
+  {
+    if (window.location.host.match(recipe_interpretors[i].matches))
+    {
+      return recipe_interpretors[i].getRecipe();
+    }
+  }
+  return null;
 };
 
 recipe = getRecipe();

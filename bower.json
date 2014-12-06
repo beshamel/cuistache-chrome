@@ -1,6 +1,6 @@
 {
   "name": "beshamel.crx",
   "dependencies": {
-	"jquery": "latest"
+    "jquery": "latest"
   }
 }
