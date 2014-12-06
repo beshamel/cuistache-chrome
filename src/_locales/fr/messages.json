@@ -10,5 +10,6 @@
    "recipe_equipments":{"message":"$1 matériel(s)"},
    "recipe_ingredients":{"message":"$1 ingrédient(s)"},
    "recipe_tasks":{"message":"$1 étape(s)"},
-   "connect": {"message": "Se Connecter"}
+   "connect": {"message": "Se Connecter"},
+   "not_connected": {"message": "Vous n'êtes pas connecté"}
 }

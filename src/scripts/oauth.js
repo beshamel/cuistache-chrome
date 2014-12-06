@@ -1,6 +1,8 @@
 //alert('OAUTH CALLBACK');
 var oauth2_token = window.localStorage.getItem('oauth2_token');
 
+var oauth2_tokeninfo_url = 'http://beshamel.fr/oauth/token/info';
+
 function getToken(success_callback,fail_callback) {
   //alert('getToken:' + oauth2_token);
   var response = $.deparam.fragment(window.location.url);
@@ -26,7 +28,7 @@ function checkToken(success_callback,fail_callback) {
     return;
   }
   
-  $.ajax('http://beshamel.dev:8080/oauth/token/info?access_token='+oauth2_token).done(function(response) {
+  $.ajax(oauth2_tokeninfo_url+'?access_token='+oauth2_token).done(function(response) {
     //alert('token valid');
     window.localStorage.setItem('oauth2_token', oauth2_token);
     if (success_callback) {

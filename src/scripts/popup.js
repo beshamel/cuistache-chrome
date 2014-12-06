@@ -9,6 +9,10 @@
  * @type {string}
  */
 
+var api_root = 'http://api.beshamel.fr';
+var authorize_url = 'http://beshamel.fr/oauth/authorize';
+var app_url = 'http://beshamel.fr/app';
+ 
 $('[data-translate]').each(function() {
   var el = $(this);
   var resourceName = el.data('translate');
@@ -20,16 +24,16 @@ $('[data-translate]').each(function() {
 var oauth2_token = window.localStorage.getItem('oauth2_token');
 
 var payload = {
-  client_id: 'daac19f9215f3752093d2135f8225ce3f4367954de2aad68cf2e6718306aeded',
+  client_id: 'b9eb0f669953a4b88bacfdd448fa966438370467476b5fa6e2615493afd214bd',
   redirect_uri: 'chrome-extension://nhdifmkahbmcgefnalnlcpjhikgnaglj/oauth_callback.html',
   response_type: 'token'
 }
 
 function authorize() {
-  var oauth_window=window.open('http://beshamel.dev:8080/oauth/authorize?'+$.param(payload), '_blank');
+  var oauth_window=window.open(authorize_url+'?'+$.param(payload), '_blank');
 }
 
-$.ajax('http://api.beshamel.dev:8080/?access_token='+oauth2_token).done(function(response){
+$.ajax(api_root+'?access_token='+oauth2_token).done(function(response){
   if (response.user)
   {
     $('#user-name').text(response.user.name);
@@ -37,15 +41,15 @@ $.ajax('http://api.beshamel.dev:8080/?access_token='+oauth2_token).done(function
   }
   else
   {
-    $('#user-name').text('You are not connected to Beshamel');
+    $('#user-name').text(chrome.i18n.getMessage("not_connected"));
     $('#user-image').hide();
-    $('#connect').attr('href','http://beshamel.dev:8080/oauth/authorize?'+$.param(payload));
+    $('#connect').attr('href',authorize_url+'?'+$.param(payload));
     $('#connect').removeClass('hidden');
   }
 }).fail(function() {
-  $('#user-name').text('You are not connected to Beshamel');
+  $('#user-name').text(chrome.i18n.getMessage("not_connected"));
   $('#user-image').hide();
-  $('#connect').attr('href','http://beshamel.dev:8080/oauth/authorize?'+$.param(payload));
+  $('#connect').attr('href',authorize_url+'?'+$.param(payload));
   $('#connect').removeClass('hidden');
 });
 
@@ -86,7 +90,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     $('#recipe-detail').slideDown();
     
     // $('a#goto').attr('href', 'http://google.fr');
-    $('a#goto').attr('href','http://beshamel.dev:8080/app#/recipes/create?'+$.param(request));
+    $('a#goto').attr('href', app_url+'#/recipes/create?'+$.param(request));
     $('a#goto').text(chrome.i18n.getMessage("import_recipe"));
   }
   else
