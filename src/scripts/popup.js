@@ -1,18 +1,12 @@
-// Copyright (c) 2012 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-/**
- * Global variable containing the query we'd like to pass to Flickr. In this
- * case, kittens!
- *
- * @type {string}
- */
-
 var api_root = 'http://api.beshamel.fr';
 var authorize_url = 'http://beshamel.fr/oauth/authorize';
 var app_url = 'http://beshamel.fr/app';
- 
+/*
+var api_root = 'http://api.beshamel.dev:8080';
+var authorize_url = 'http://beshamel.dev:8080/oauth/authorize';
+var app_url = 'http://beshamel.dev:8080/app';
+*/
+
 $('[data-translate]').each(function() {
   var el = $(this);
   var resourceName = el.data('translate');

@@ -2,6 +2,7 @@
 var oauth2_token = window.localStorage.getItem('oauth2_token');
 
 var oauth2_tokeninfo_url = 'http://beshamel.fr/oauth/token/info';
+//var oauth2_tokeninfo_url = 'http://beshamel.dev:8080/oauth/token/info';
 
 function getToken(success_callback,fail_callback) {
   //alert('getToken:' + oauth2_token);
